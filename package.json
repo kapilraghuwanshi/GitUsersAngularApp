@@ -1,6 +1,6 @@
 {
-  "name": "angular-learn",
-  "version": "0.0.0",
+  "name": "GitUsersAngularApp",
+  "version": "0.0.1",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
