@@ -1,38 +1,68 @@
-<table>
-  <tr class="navBar">
-    <td>
-      sort
-    </td>
-    <td>
-      <input type="text" id="inputName" [(ngModel)]="inputName" placeholder="Search.." />
-      <button (click)="searchByName()">
-        <i class="fa fa-search"></i>
-      </button>
-    </td>
-  </tr>
+<!--Nav Bar-->
+<div class="navBar row">
+  <div class="col-6">
+    <select>
+      <option>Name(A-Z)</option>
+      <option>Name(Z-A)</option>
+      <option>Rank
+        <span class="glyphicon glyphicon-arrow-up"></span>
+      </option>
+      <option>Rank
+        <span class="glyphicon glyphicon-arrow-down"></span>
+      </option>
+    </select>
+  </div>
+  <div class="col-6">
+    <input type="text" id="inputName" [(ngModel)]="inputName" placeholder="Search.." />
+    <button (click)="searchByName()">
+      <span class="glyphicon glyphicon-search"></span>
+    </button>
+  </div>
+</div>
+<!--Main Body-->
+<div class="container">
+  <div *ngIf="totalUserCount > 0">
+    <b>Total Results:</b> {{totalUserCount}}
+  </div>
+  <div *ngFor="let user of userDataItems">
+    <div class="card row">
+      <!--user image-->
+      <div class="col-4">
+        <img src={{user.avatar_url}} width="120px" height="120px">
+      </div>
+      <div class="col-4">
 
-  <tr class="container">
-    <div *ngFor="let user of userDataItems">
-      <div class="card">
-        <td class="col-4">
-          <img src={{user.avatar_url}} width="120px" height="120px">
-        </td>
-        <td class="col-4">
-          <table>
-            <tr class="name">{{user.login}}</tr>
-            <tr>Profile URL: {{user.url}}</tr>
-            <tr>Score: {{user.score}}</tr>
-          </table>
-        </td>
-        <td class="detailButton" data-toggle="collapse" data-target="#detailBox">
-          <button>Details</button>
+        <div class="name">{{user.login}}</div>
+        <div>
+          <b>Profile URL:</b> {{user.url}}</div>
+        <div>
+          <b>Score:</b> {{user.score}}</div>
+
+      </div>
+      <!--Details Button-->
+      <div class="collapsed active col-4" data-toggle="collapse" data-target="#detailBox">
+        <button class="btn btn-primary" (click)="getUserFullDetails(user.login)">
+          Details
           <span class="caret"></span>
-        </td>
-        <td id="detailBox">
-          {{user.login}}
-        </td>
+        </button>
+      </div>
+      <!--Details Card-->
+      <div id="detailBox" class="collapse card_details">
+
+        <div class="row">
+          <div class="col-6"><b>Repository Name</b></div>
+          <div class="col-6"><b>Developed Language</b></div>
+        </div>
+
+        <div *ngFor="let userRepo of userDetails">
+
+          <div class="row">
+            <div class="col-6">{{userRepo.name}}</div>
+            <div class="col-6">{{userRepo.language}}</div>
+          </div>
+
+        </div>
       </div>
     </div>
-  </tr>
-
-</table>
+  </div>
+</div>

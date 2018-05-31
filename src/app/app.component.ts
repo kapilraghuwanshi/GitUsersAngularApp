@@ -9,6 +9,7 @@ import { GithubRestApiService } from '../providers/github-rest-api.service';
 export class AppComponent {
 
   inputName: string = "";
+  totalUserCount : number;
   userDataSet: any;
   userDataItems: any = [];
   userDetails: any = [];
@@ -21,14 +22,16 @@ export class AppComponent {
     this.gitRestService.getGithubUsersByName(this.inputName)
       .then(responseData => {
         this.userDataSet = responseData;
+        this.totalUserCount = this.userDataSet.total_count;
+        console.log(this.totalUserCount);
         console.log(this.userDataSet);
         this.userDataItems = this.userDataSet.items;
         console.log(this.userDataItems);
       }
 }
 
-  getUserFullDetails() {
-    this.gitRestService.getGithubUserDetails(this.inputName)
+  getUserFullDetails(userTrueName) {
+    this.gitRestService.getGithubUserDetails(userTrueName)
       .then(responseData => {
         this.userDetails = responseData;
         console.log(this.userDetails);
