@@ -1,0 +1,32 @@
+.navBar {
+    background-color: #005a96;
+    width:100%;
+    height :80px;
+    position: fixed;
+}
+
+.container {
+   position: absolute;
+   margin-top: 110px;
+}
+
+.card {
+    background-color: grey;
+    position: relative;
+    padding : 10px;
+    margin : 10px;
+}
+
+.name {
+    font-size : 25px;
+    font-weight: bold;
+}
+
+.detailButton {
+    color:#005a96;
+    float: right;
+}
+
+img {
+    border-radius : 50%;
+}

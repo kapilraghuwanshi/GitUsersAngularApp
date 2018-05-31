@@ -1,6 +1,38 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-</div>
+<table>
+  <tr class="navBar">
+    <td>
+      sort
+    </td>
+    <td>
+      <input type="text" id="inputName" [(ngModel)]="inputName" placeholder="Search.." />
+      <button (click)="searchByName()">
+        <i class="fa fa-search"></i>
+      </button>
+    </td>
+  </tr>
+
+  <tr class="container">
+    <div *ngFor="let user of userDataItems">
+      <div class="card">
+        <td class="col-4">
+          <img src={{user.avatar_url}} width="120px" height="120px">
+        </td>
+        <td class="col-4">
+          <table>
+            <tr class="name">{{user.login}}</tr>
+            <tr>Profile URL: {{user.url}}</tr>
+            <tr>Score: {{user.score}}</tr>
+          </table>
+        </td>
+        <td class="detailButton" data-toggle="collapse" data-target="#detailBox">
+          <button>Details</button>
+          <span class="caret"></span>
+        </td>
+        <td id="detailBox">
+          {{user.login}}
+        </td>
+      </div>
+    </div>
+  </tr>
+
+</table>
