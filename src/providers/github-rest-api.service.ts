@@ -28,6 +28,7 @@ export class GithubRestApiService {
   //method to fetch Githb users data from REST Api by making http request
   getGithubUserDetails(userTrueName) {
     return new Promise(resolve => {
+     // console.log(userTrueName);
       this.httpServ.get("https://api.github.com/users/" + userTrueName + "/repos")
         .map(resp => resp.json())
         .subscribe(tempdata => {
