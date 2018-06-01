@@ -20,7 +20,7 @@
 <!--Main Body-->
 <div class="container">
   <div class="row">
-    <div *ngIf="totalUserCount > 0">
+    <div class="count" *ngIf="totalUserCount > 0">
       <b>Total Results:</b> {{totalUserCount}}
     </div>
     <div *ngFor="let user of userDataItems">
@@ -35,11 +35,14 @@
             <b>Profile URL:</b> {{user.url}}</div>
           <div>
             <b>Score:</b> {{user.score}}</div>
+          <div>
+            <b>Type:</b> {{user.type}}</div>
+          <div>
+            <b>Site-Admin:</b> {{user.site_admin}}</div>
         </div>
 
         <!--Details Button-->
-        <div class="collapsed active detailButton col-sm-2" data-toggle="collapse"
-             [attr.data-target]="'#'+user.login">
+        <div class="collapsed active detailButton col-sm-2" data-toggle="collapse" [attr.data-target]="'#'+user.login">
           <button class="btn btn-primary" (click)="getUserFullDetails(user.login)">
             Details
             <span class="caret"></span>
@@ -52,14 +55,18 @@
             <table class="table table-striped">
               <thead>
                 <th>Repository Name</th>
-                <th>Development Language</th>
+                <th>Language</th>
+                <th>Stars</th>
+                <th>Forks</th>
               </thead>
               <tbody>
                 <tr *ngFor="let userRepo of userDetails">
                   <td>{{userRepo.name}}</td>
                   <td>{{userRepo.language}}</td>
+                  <td>{{userRepo.stargazers_count}}</td>
+                  <td>{{userRepo.forks_count}}</td>
                 </tr>
-            </tbody>
+              </tbody>
             </table>
           </div>
         </div>

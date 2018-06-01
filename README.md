@@ -1,27 +1,16 @@
 # GitUsersAngularApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.5.
+The aim of the project is to provide an interface to search for users on GitHub using the GitHub
+REST API.
+There would also be an option to sort users by their name alphabetically or based on their Rank.
+
+As the user types into the search box on the top right, the profiles of users are fetched.
+
+In the expanded view, show a list of users repositories.
+
+The font used in the design is Lato. The search results list are paginated.
 
 ## Development server
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.5.
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
