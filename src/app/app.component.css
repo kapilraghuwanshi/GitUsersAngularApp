@@ -100,8 +100,15 @@ th {
 }
 
 .footer {
-    font-size:11px;
+    width:100%;
+    position:sticky;
+    font-size:13px;
     text-align:center;
     background-color:#005a96;
     font-weight: bold;
+    color: white;
+}
+
+noData {
+    text-align:center;
 }

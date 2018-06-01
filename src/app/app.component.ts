@@ -33,7 +33,6 @@ export class AppComponent {
         this.filteredItems = this.userDataItems;
         this.initPagination();
       });
-    console.log(this.userDataItems);
   }
 
   // Search by name method - if name empty then default otherwise by name
@@ -45,6 +44,7 @@ export class AppComponent {
           this.totalUserCount = this.userDataSet.total_count;
           this.userDataItems = this.userDataSet.items;
           this.filteredItems = this.userDataItems;
+          console.log(this.userDataItems);
           this.initPagination();
         });
     }
@@ -63,12 +63,11 @@ export class AppComponent {
   }
 
   // Get full details method
-  getUserFullDetails(userTrueName) {
+  getUserFullDetails(userTrueName, id) {
 
     this.gitRestService.getGithubUserDetails(userTrueName)
       .then(responseData => {
         this.userDetails = responseData;
-        console.log(this.userDetails);
       });
   }
 
@@ -81,13 +80,11 @@ export class AppComponent {
       this.userDataItems.reverse();
     }
     else if (this.selectedSort === "RankUp") {
-      console.log("Inside RankUp");
-      this.userDataItems.sort((a,b)=>{
+      this.userDataItems.sort((a, b) => {
         return a.score < b.score;
       });
     }
     else if (this.selectedSort === "RankDown") {
-      console.log("Inside RankDown");
       this.userDataItems.sort((a, b) => {
         return a.score > b.score;
       });

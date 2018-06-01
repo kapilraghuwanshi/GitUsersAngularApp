@@ -10,7 +10,7 @@
       </select>
     </div>
     <div class="col-xs-6">
-      <input type="text" id="inputName" [(ngModel)]="inputName" placeholder="Search.." />
+      <input type="text" id="inputName" [(ngModel)]="inputName" placeholder="Search by Names like Shantanu.." />
       <button class="searchButton" (click)="searchByName()">
         <i class="glyphicon glyphicon-search"></i>
       </button>
@@ -22,6 +22,10 @@
   <div class="row">
     <div class="count" *ngIf="totalUserCount > 0">
       <b>Total Results:</b> {{totalUserCount}}
+    </div>
+    <div *ngIf="totalUserCount == 0" class="noData">
+      No data available for given search keyword :
+      <b>{{inputName}}</b>. Try searching other names like "Kapil", "Nimesh"...
     </div>
     <div *ngFor="let user of userDataItems">
       <div class="card row">
@@ -43,7 +47,7 @@
 
         <!--Details Button-->
         <div class="collapsed active detailButton col-sm-2" data-toggle="collapse" [attr.data-target]="'#'+user.login">
-          <button class="btn btn-primary" (click)="getUserFullDetails(user.login)">
+          <button class="btn btn-primary" (click)="getUserFullDetails(user.login, user.id)">
             Details
             <span class="caret"></span>
           </button>
