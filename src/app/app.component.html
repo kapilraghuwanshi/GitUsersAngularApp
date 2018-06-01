@@ -1,22 +1,18 @@
 <!--Nav Bar-->
-<div class="navBar">
+<div class="container navBar">
   <div class="row">
-    <div class="col-6">
-      <select>
-        <option>Name(A-Z)</option>
-        <option>Name(Z-A)</option>
-        <option>Rank
-          <span class="glyphicon glyphicon-arrow-up"></span>
-        </option>
-        <option>Rank
-          <span class="glyphicon glyphicon-arrow-down"></span>
-        </option>
+    <div class="col-xs-6">
+      <select class="dropDown" [(ngModel)]="selectedSort" (click)="SortingResult()">
+        <option value="NameAlphabeticallyAZ">Sort By Name (A-Z)</option>
+        <option value="NameReverseAlphabeticallyZA">Sort By Name (Z-A)</option>
+        <option value="RankUp">Sort By Rank Up</option>
+        <option value="RankDown">Sort By Rank Down</option>
       </select>
     </div>
-    <div class="col-6">
+    <div class="col-xs-6">
       <input type="text" id="inputName" [(ngModel)]="inputName" placeholder="Search.." />
-      <button (click)="searchByName()">
-        <span class="glyphicon glyphicon-search"></span>
+      <button class="searchButton" (click)="searchByName()">
+        <i class="glyphicon glyphicon-search"></i>
       </button>
     </div>
   </div>
@@ -30,10 +26,10 @@
     <div *ngFor="let user of userDataItems">
       <div class="card row">
         <!--user image-->
-        <div class="col-4">
+        <div class="col-sm-3">
           <img src={{user.avatar_url}} width="120px" height="120px">
         </div>
-        <div class="col-4">
+        <div class="col-sm-7">
           <div class="name">{{user.login}}</div>
           <div>
             <b>Profile URL:</b> {{user.url}}</div>
@@ -42,7 +38,8 @@
         </div>
 
         <!--Details Button-->
-        <div class="collapsed active col-4" data-toggle="collapse" [attr.data-target]="'#'+user.login">
+        <div class="collapsed active detailButton col-sm-2" data-toggle="collapse"
+             [attr.data-target]="'#'+user.login">
           <button class="btn btn-primary" (click)="getUserFullDetails(user.login)">
             Details
             <span class="caret"></span>
@@ -52,18 +49,18 @@
         <!--Details Card-->
         <div id={{user.login}} class="collapse card_details">
           <div class="row">
-            <div class="col-6">
-              <b>Repository Name</b>
-            </div>
-            <div class="col-6">
-              <b>Development Language</b>
-            </div>
-            <div *ngFor="let userRepo of userDetails">
-              <div class="row">
-                <div class="col-6">{{userRepo.name}}</div>
-                <div class="col-6">{{userRepo.language}}</div>
-              </div>
-            </div>
+            <table class="table table-striped">
+              <thead>
+                <th>Repository Name</th>
+                <th>Development Language</th>
+              </thead>
+              <tbody>
+                <tr *ngFor="let userRepo of userDetails">
+                  <td>{{userRepo.name}}</td>
+                  <td>{{userRepo.language}}</td>
+                </tr>
+            </tbody>
+            </table>
           </div>
         </div>
 
@@ -93,3 +90,5 @@
     </div>
   </div>
 </div>
+
+<footer class="footer">All right reserved</footer>
